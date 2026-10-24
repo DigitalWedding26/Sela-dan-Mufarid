@@ -1950,5 +1950,24 @@ html body #invitation section#salam.scene .separator {
 }
 </style>
 
-</body>
+
+<style id="user-revision-salam-photo-only">
+/* Revisi khusus halaman pertama setelah amplop terbuka: tampilkan foto saja. */
+html body #invitation section#salam.scene {
+  min-height: 100svh !important;
+  height: 100svh !important;
+  padding: 0 !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+/* Sembunyikan seluruh tulisan dan ornamen pada halaman ini saja. */
+html body #invitation section#salam.scene .scene-inner,
+html body #invitation section#salam.scene .corner-blooms,
+html body #invitation section#salam.scene::before,
+html body #invitation section#salam.scene::after {
+  display: none !important;
+  content: none !important;
+}
+</style>
+\n</body>
 </html>
