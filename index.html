@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="id">
 <head>
 <meta charset="utf-8"/>
@@ -1045,6 +1043,547 @@ html, body { background:var(--mahogany); }
   }
   html body.opened #cover { display: none !important; }
 </style>
+<style id="user-revision-salam-names-and-guest">
+/* Revisi tambahan terbatas: tampilkan nama mempelai dan nama tamu di atas foto halaman salam. */
+html body #invitation section#salam.scene { position:relative !important; }
+html body #invitation section#salam.scene .salam-personalized {
+  position:absolute !important;
+  z-index:5 !important;
+  inset:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  box-sizing:border-box !important;
+  padding:clamp(42px,8vh,86px) 20px clamp(32px,7vh,70px) !important;
+  color:#fffaf0 !important;
+  text-align:center !important;
+  pointer-events:none !important;
+  text-shadow:0 2px 9px rgba(0,0,0,.85),0 1px 3px rgba(0,0,0,.9) !important;
+}
+html body #invitation section#salam.scene .salam-couple-names {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:5px !important;
+  max-width:min(92vw,560px) !important;
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:clamp(1.25rem,4.8vw,2.05rem) !important;
+  line-height:1.08 !important;
+  font-weight:600 !important;
+}
+html body #invitation section#salam.scene .salam-ampersand {
+  color:#f0d49a !important;
+  font-family:'Great Vibes',cursive !important;
+  font-size:1.25em !important;
+  line-height:1 !important;
+}
+html body #invitation section#salam.scene .salam-guest-address {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:5px !important;
+  max-width:min(90vw,480px) !important;
+  font-family:'DM Sans',Arial,sans-serif !important;
+  font-size:clamp(.8rem,2.8vw,1rem) !important;
+  line-height:1.4 !important;
+}
+html body #invitation section#salam.scene .salam-guest-address strong {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:clamp(1.15rem,4vw,1.65rem) !important;
+  font-weight:700 !important;
+  overflow-wrap:anywhere !important;
+}
+</style>
+<style id="user-revision-calligraphy-matching-first-page">
+/* Revisi terbatas: nama mempelai bersambung; halaman pertama setelah tombol dibuka menyamai tampilan foto sampul. */
+#cover .cover-names,
+#cover .cover-names .full-name,
+#invitation #salam .salam-couple-names,
+#invitation #salam .salam-couple-names span:not(.salam-ampersand) {
+  font-family:'Great Vibes','Lobster Two','Brush Script MT',cursive !important;
+  font-weight:400 !important;
+  letter-spacing:0 !important;
+}
+#invitation #salam.scene {
+  position:relative !important;
+  min-height:100svh !important;
+  height:100svh !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  display:block !important;
+  background-image:linear-gradient(180deg,rgba(26,31,21,.36) 0%,rgba(31,37,23,.40) 34%,rgba(32,39,23,.72) 66%,rgba(25,31,18,.94) 100%),var(--cover-photo) !important;
+  background-size:cover !important;
+  background-position:center 45% !important;
+}
+#invitation #salam.scene .salam-personalized {
+  justify-content:space-between !important;
+  padding:clamp(54px,10vh,100px) 20px clamp(42px,8vh,80px) !important;
+}
+#invitation #salam.scene .salam-couple-names {
+  font-size:clamp(2rem,8vw,3.2rem) !important;
+  line-height:1.02 !important;
+  gap:0 !important;
+  text-shadow:0 2px 10px rgba(0,0,0,.82) !important;
+}
+#invitation #salam.scene .salam-ampersand {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:.65em !important;
+  line-height:1.1 !important;
+}
+#invitation #salam.scene .salam-guest-address {
+  font-family:'DM Sans',Arial,sans-serif !important;
+  text-shadow:0 2px 9px rgba(0,0,0,.9) !important;
+}
+#invitation #salam.scene .salam-guest-address strong {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:clamp(1.25rem,4.5vw,1.8rem) !important;
+}
+@media(max-width:520px) {
+  #invitation #salam.scene .salam-couple-names {font-size:clamp(1.85rem,8.4vw,2.55rem)!important;}
+}
+</style>
+<style id="revision-guest-name-no-box">
+/* Nama tamu tampil langsung di atas desain, tanpa kotak atau panel. */
+#cover .guest-address,
+#cover.cover-centered .guest-address,
+#cover .guest-address strong,
+#invitation #salam .salam-guest-address,
+#invitation #salam .salam-guest-address strong {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+#cover .guest-address {
+  width: auto !important;
+  max-width: min(90vw, 480px) !important;
+  padding: 0 !important;
+}
+#cover .guest-address strong {
+  padding: 0 !important;
+  margin: 3px auto !important;
+}
+#invitation #salam .salam-guest-address strong {
+  padding: 0 !important;
+}
+</style>
+<style id="user-revision-remove-monogram-lift-cover-text">
+/* Hilangkan monogram M&S dan label "Undangan Pernikahan" pada sampul. */
+#cover .brand-mark,
+#cover .cover-kicker { display:none !important; }
+/* Naikkan susunan nama dan beri jarak yang lebih lega. */
+#cover .cover-inner {
+  transform:translateY(-2.5vh) !important;
+}
+#cover .cover-names {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:clamp(7px,1.5vh,14px) !important;
+  line-height:1.12 !important;
+}
+#cover .cover-names .cover-and { margin:1px 0 !important; }
+#cover .cover-date { margin-top:clamp(18px,3vh,28px) !important; }
+/* Halaman pertama setelah tombol dibuka: teks dinaikkan dan diberi jarak. */
+#invitation #salam.scene .salam-personalized {
+  justify-content:flex-start !important;
+  gap:clamp(30px,6vh,58px) !important;
+  padding:clamp(38px,7vh,68px) 20px 30px !important;
+}
+#invitation #salam.scene .salam-couple-names {
+  gap:clamp(7px,1.5vh,14px) !important;
+  line-height:1.12 !important;
+}
+#invitation #salam.scene .salam-guest-address {
+  margin-top:clamp(8px,1.5vh,16px) !important;
+  line-height:1.7 !important;
+}
+</style>
+<style id="revision-cover-no-logo-no-date-top-spaced">
+/* Logo M&S, label "Undangan Pernikahan", dan tanggal sampul dihapus dari markup. */
+#cover {
+  align-items:flex-start !important;
+  justify-content:center !important;
+  padding:0 !important;
+}
+#cover .cover-inner.cover-centered {
+  position:absolute !important;
+  top:clamp(58px,8vh,94px) !important;
+  left:50% !important;
+  width:min(100%,560px) !important;
+  max-height:calc(100svh - clamp(58px,8vh,94px) - 14px) !important;
+  margin:0 !important;
+  padding:0 16px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+  align-items:center !important;
+  gap:clamp(12px,2vh,18px) !important;
+  text-align:center !important;
+  transform:translateX(-50%) !important;
+  animation:none !important;
+}
+/* Tidak ada animasi/jeda kemunculan teks di sampul. */
+#cover .cover-word {
+  opacity:1 !important;
+  animation:none !important;
+  transform:none !important;
+  filter:none !important;
+}
+#cover .cover-names {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:clamp(9px,1.8vh,16px) !important;
+  margin:0 auto !important;
+  line-height:1.18 !important;
+}
+#cover .cover-names .full-name {
+  display:block !important;
+  line-height:1.22 !important;
+}
+#cover .cover-names .cover-and {
+  display:block !important;
+  line-height:1.1 !important;
+  margin:0.12em 0 !important;
+}
+#cover .guest-address {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:clamp(6px,1.2vh,10px) !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  line-height:1.55 !important;
+}
+#cover .guest-address strong {
+  margin:3px auto !important;
+  padding:0 !important;
+  line-height:1.5 !important;
+}
+#cover .envelope-button {
+  margin:clamp(7px,1.4vh,12px) auto 0 !important;
+}
+#cover .cover-hint {
+  margin:clamp(5px,1.1vh,10px) auto 0 !important;
+  line-height:1.6 !important;
+}
+@media(max-height:650px) {
+  #cover .cover-inner.cover-centered {
+    top:30px !important;
+    max-height:calc(100svh - 38px) !important;
+    gap:8px !important;
+  }
+  #cover .cover-names { gap:7px !important; }
+}
+</style>
+<style id="instant-open-final-override">
+/* FINAL OVERRIDE: tombol membuka langsung ke halaman pertama tanpa animasi lama. */
+html body.instant-open #cover,
+html body.instant-open #cover * {
+  animation: none !important;
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  transition: none !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+html body.instant-open #cover { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+html body.instant-open #invitation {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+html body.instant-open #invitation #salam,
+html body.instant-open #invitation #salam *,
+html body.instant-open #invitation #salam::before,
+html body.instant-open #invitation #salam::after {
+  animation: none !important;
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  transition: none !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+html body.instant-open #invitation #salam .sentence-reveal-item,
+html body.instant-open #invitation #salam.scene-motion .sentence-reveal-item,
+html body.instant-open #invitation #salam .reveal-on-scroll,
+html body.instant-open #invitation #salam .is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+</style>
+
+<style id="final-cover-layout-no-flash">
+/* Critical cover overrides are in HEAD to prevent the original layout flashing before the revised design. */
+html { scroll-behavior: auto !important; }
+html body #cover,
+html body #cover.leaving,
+html body #cover *,
+html body #cover *::before,
+html body #cover *::after {
+  animation: none !important;
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  transition: none !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+html body #cover {
+  display: flex !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  overflow: hidden !important;
+}
+html body #cover .cover-inner.cover-centered {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  transform: none !important;
+  animation: none !important;
+}
+/* Keep the couple near the top, with clear spacing between each line. */
+html body #cover .cover-inner > .eyebrow {
+  display: block !important;
+  position: absolute !important;
+  top: clamp(28px, 5.5vh, 64px) !important;
+  left: 10px !important;
+  right: 10px !important;
+  margin: 0 auto !important;
+  font-size: clamp(.58rem, 2.5vw, .72rem) !important;
+  line-height: 1.4 !important;
+  letter-spacing: .22em !important;
+  opacity: 1 !important;
+}
+html body #cover .cover-names {
+  position: absolute !important;
+  top: clamp(70px, 11.5vh, 118px) !important;
+  left: 50% !important;
+  width: min(92vw, 560px) !important;
+  max-width: 92vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(7px, 1.6vh, 14px) !important;
+  transform: translateX(-50%) !important;
+  font-size: clamp(1.9rem, 7.2vw, 3rem) !important;
+  line-height: 1.12 !important;
+  opacity: 1 !important;
+  text-align: center !important;
+}
+html body #cover .cover-names .full-name {
+  display: block !important;
+  line-height: 1.18 !important;
+  margin: 0 !important;
+}
+html body #cover .cover-names .cover-and {
+  display: block !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+/* Guest name is large and sits immediately above the bottom action button. */
+html body #cover .guest-address {
+  display: flex !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 48px + clamp(15px, 2.7vh, 24px)) !important;
+  width: min(92vw, 560px) !important;
+  max-width: 92vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: clamp(2px, .8vh, 7px) !important;
+  transform: translateX(-50%) !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+html body #cover .guest-label {
+  display: block !important;
+  font: 500 clamp(.68rem, 2.7vw, .86rem)/1.35 Arial, sans-serif !important;
+  letter-spacing: .06em !important;
+  margin: 0 !important;
+}
+html body #cover .guest-address strong {
+  display: block !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(1.85rem, 7.4vw, 2.8rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  overflow-wrap: anywhere !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+}
+html body #cover .guest-subtitle,
+html body #cover .cover-hint,
+html body #cover .brand-mark,
+html body #cover .cover-kicker,
+html body #cover .cover-date {
+  display: none !important;
+}
+html body #cover .envelope-button {
+  display: flex !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: max(18px, env(safe-area-inset-bottom)) !important;
+  z-index: 10 !important;
+  width: auto !important;
+  min-width: min(220px, 78vw) !important;
+  min-height: 46px !important;
+  margin: 0 !important;
+  padding: 12px 26px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: translateX(-50%) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  border-radius: 999px !important;
+  cursor: pointer !important;
+}
+html body #cover .envelope-button .envelope-action-label {
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+/* Small landscape screens: keep the top names and bottom guest/button separated. */
+@media (max-height: 500px) {
+  html body #cover .cover-inner > .eyebrow { top: 14px !important; }
+  html body #cover .cover-names {
+    top: 42px !important;
+    font-size: clamp(1.45rem, 4.4vw, 2rem) !important;
+    gap: 3px !important;
+  }
+  html body #cover .guest-address {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 42px + 8px) !important;
+    gap: 1px !important;
+  }
+  html body #cover .guest-address strong { font-size: clamp(1.25rem, 4vw, 1.8rem) !important; }
+  html body #cover .envelope-button { bottom: max(10px, env(safe-area-inset-bottom)) !important; min-height: 38px !important; padding: 8px 20px !important; }
+}
+/* Once opened, completely remove the cover and show the first invitation page immediately. */
+html body.instant-open #cover { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+html body.instant-open #invitation {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+html body.instant-open #invitation #salam,
+html body.instant-open #invitation #salam *,
+html body.instant-open #invitation #salam::before,
+html body.instant-open #invitation #salam::after {
+  animation: none !important;
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  transition: none !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+html body.instant-open #invitation #salam .sentence-reveal-item,
+html body.instant-open #invitation #salam.scene-motion .sentence-reveal-item,
+html body.instant-open #invitation #salam .reveal-on-scroll,
+html body.instant-open #invitation #salam .is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+</style>
+
+
+<style id="revision-couple-names-single-row-guest-raised">
+/* Keep the complete couple names on one single horizontal line. */
+html body #cover .cover-names {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  gap: .16em !important;
+  position: absolute !important;
+  top: clamp(70px, 11.5vh, 118px) !important;
+  left: 50% !important;
+  width: 99vw !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  padding: 0 2px !important;
+  white-space: nowrap !important;
+  font-size: clamp(.70rem, 4.5vw, 1.4rem) !important;
+  line-height: 1.2 !important;
+  text-wrap: nowrap !important;
+  overflow: visible !important;
+  transform: translateX(-50%) !important;
+}
+html body #cover .cover-names .full-name {
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  line-height: 1.2 !important;
+  font-size: 1em !important;
+}
+html body #cover .cover-names .cover-and {
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: .78em !important;
+  line-height: 1 !important;
+}
+/* Lift the guest information by about two text lines; keep the button at the bottom. */
+html body #cover .guest-address {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 48px + clamp(48px, 6.5vh, 64px)) !important;
+}
+@media (max-height: 500px) {
+  html body #cover .cover-names {
+    top: 42px !important;
+    font-size: clamp(.68rem, 3.7vw, 1rem) !important;
+    gap: .1em !important;
+  }
+  html body #cover .guest-address {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 42px + 28px) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <section aria-label="Sampul undangan" id="cover">
@@ -1064,10 +1603,10 @@ html, body { background:var(--mahogany); }
 <div aria-live="polite" class="guest-address cover-word" style="--word-delay:.58s">
 <span class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i</span>
 <strong id="guest-name-display">Tamu Undangan</strong>
-<span class="guest-subtitle">Dengan hormat, kami mengundang Anda</span>
+
 </div>
 <button aria-label="Buka undangan" aria-pressed="false" class="envelope-button" id="open-invitation" type="button"><span class="envelope-action-label">Buka Undangan</span></button>
-<div class="cover-hint cover-word" style="--word-delay:.78s"><span aria-hidden="true" class="hint-heart">♥</span> Sebuah kisah, sebuah undangan <span aria-hidden="true" class="hint-heart">♥</span></div>
+
 </div>
 </section>
 <main aria-label="Isi undangan pernikahan" id="invitation">
@@ -2006,61 +2545,7 @@ html body #invitation section#salam.scene::after {
   content: none !important;
 }
 </style>
-\n</body>
-</html>
-
-<style id="user-revision-salam-names-and-guest">
-/* Revisi tambahan terbatas: tampilkan nama mempelai dan nama tamu di atas foto halaman salam. */
-html body #invitation section#salam.scene { position:relative !important; }
-html body #invitation section#salam.scene .salam-personalized {
-  position:absolute !important;
-  z-index:5 !important;
-  inset:0 !important;
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  box-sizing:border-box !important;
-  padding:clamp(42px,8vh,86px) 20px clamp(32px,7vh,70px) !important;
-  color:#fffaf0 !important;
-  text-align:center !important;
-  pointer-events:none !important;
-  text-shadow:0 2px 9px rgba(0,0,0,.85),0 1px 3px rgba(0,0,0,.9) !important;
-}
-html body #invitation section#salam.scene .salam-couple-names {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:5px !important;
-  max-width:min(92vw,560px) !important;
-  font-family:'Cormorant Garamond',Georgia,serif !important;
-  font-size:clamp(1.25rem,4.8vw,2.05rem) !important;
-  line-height:1.08 !important;
-  font-weight:600 !important;
-}
-html body #invitation section#salam.scene .salam-ampersand {
-  color:#f0d49a !important;
-  font-family:'Great Vibes',cursive !important;
-  font-size:1.25em !important;
-  line-height:1 !important;
-}
-html body #invitation section#salam.scene .salam-guest-address {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:5px !important;
-  max-width:min(90vw,480px) !important;
-  font-family:'DM Sans',Arial,sans-serif !important;
-  font-size:clamp(.8rem,2.8vw,1rem) !important;
-  line-height:1.4 !important;
-}
-html body #invitation section#salam.scene .salam-guest-address strong {
-  font-family:'Cormorant Garamond',Georgia,serif !important;
-  font-size:clamp(1.15rem,4vw,1.65rem) !important;
-  font-weight:700 !important;
-  overflow-wrap:anywhere !important;
-}
-</style>
+\n
 <script id="user-revision-salam-guest-sync">
 (() => {
   const params = new URLSearchParams(window.location.search);
@@ -2070,237 +2555,143 @@ html body #invitation section#salam.scene .salam-guest-address strong {
 })();
 </script>
 
-<style id="user-revision-calligraphy-matching-first-page">
-/* Revisi terbatas: nama mempelai bersambung; halaman pertama setelah tombol dibuka menyamai tampilan foto sampul. */
-#cover .cover-names,
-#cover .cover-names .full-name,
-#invitation #salam .salam-couple-names,
-#invitation #salam .salam-couple-names span:not(.salam-ampersand) {
-  font-family:'Great Vibes','Lobster Two','Brush Script MT',cursive !important;
-  font-weight:400 !important;
-  letter-spacing:0 !important;
+<style id="revision-couple-names-stacked-and-button-raised">
+/* Sampul: nama mempelai laki-laki, &, dan nama mempelai wanita tampil pada tiga baris. */
+html body #cover .cover-names {
+  position: absolute !important;
+  top: clamp(72px, 11.5vh, 118px) !important;
+  left: 50% !important;
+  width: min(96vw, 620px) !important;
+  max-width: 96vw !important;
+  box-sizing: border-box !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(5px, .9vh, 10px) !important;
+  transform: translateX(-50%) !important;
+  font-family: 'Great Vibes', 'Lobster Two', 'Brush Script MT', cursive !important;
+  font-size: clamp(1.4rem, 6.5vw, 2.65rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.12 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow: visible !important;
 }
-#invitation #salam.scene {
-  position:relative !important;
-  min-height:100svh !important;
-  height:100svh !important;
-  padding:0 !important;
-  overflow:hidden !important;
-  display:block !important;
-  background-image:linear-gradient(180deg,rgba(26,31,21,.36) 0%,rgba(31,37,23,.40) 34%,rgba(32,39,23,.72) 66%,rgba(25,31,18,.94) 100%),var(--cover-photo) !important;
-  background-size:cover !important;
-  background-position:center 45% !important;
-}
-#invitation #salam.scene .salam-personalized {
-  justify-content:space-between !important;
-  padding:clamp(54px,10vh,100px) 20px clamp(42px,8vh,80px) !important;
-}
-#invitation #salam.scene .salam-couple-names {
-  font-size:clamp(2rem,8vw,3.2rem) !important;
-  line-height:1.02 !important;
-  gap:0 !important;
-  text-shadow:0 2px 10px rgba(0,0,0,.82) !important;
-}
-#invitation #salam.scene .salam-ampersand {
-  font-family:'Cormorant Garamond',Georgia,serif !important;
-  font-size:.65em !important;
-  line-height:1.1 !important;
-}
-#invitation #salam.scene .salam-guest-address {
-  font-family:'DM Sans',Arial,sans-serif !important;
-  text-shadow:0 2px 9px rgba(0,0,0,.9) !important;
-}
-#invitation #salam.scene .salam-guest-address strong {
-  font-family:'Cormorant Garamond',Georgia,serif !important;
-  font-size:clamp(1.25rem,4.5vw,1.8rem) !important;
-}
-@media(max-width:520px) {
-  #invitation #salam.scene .salam-couple-names {font-size:clamp(1.85rem,8.4vw,2.55rem)!important;}
-}
-</style>
-
-<style id="revision-guest-name-no-box">
-/* Nama tamu tampil langsung di atas desain, tanpa kotak atau panel. */
-#cover .guest-address,
-#cover.cover-centered .guest-address,
-#cover .guest-address strong,
-#invitation #salam .salam-guest-address,
-#invitation #salam .salam-guest-address strong {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-#cover .guest-address {
-  width: auto !important;
-  max-width: min(90vw, 480px) !important;
-  padding: 0 !important;
-}
-#cover .guest-address strong {
-  padding: 0 !important;
-  margin: 3px auto !important;
-}
-#invitation #salam .salam-guest-address strong {
-  padding: 0 !important;
-}
-</style>
-
-<style id="user-revision-remove-monogram-lift-cover-text">
-/* Hilangkan monogram M&S dan label "Undangan Pernikahan" pada sampul. */
-#cover .brand-mark,
-#cover .cover-kicker { display:none !important; }
-/* Naikkan susunan nama dan beri jarak yang lebih lega. */
-#cover .cover-inner {
-  transform:translateY(-2.5vh) !important;
-}
-#cover .cover-names {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:clamp(7px,1.5vh,14px) !important;
-  line-height:1.12 !important;
-}
-#cover .cover-names .cover-and { margin:1px 0 !important; }
-#cover .cover-date { margin-top:clamp(18px,3vh,28px) !important; }
-/* Halaman pertama setelah tombol dibuka: teks dinaikkan dan diberi jarak. */
-#invitation #salam.scene .salam-personalized {
-  justify-content:flex-start !important;
-  gap:clamp(30px,6vh,58px) !important;
-  padding:clamp(38px,7vh,68px) 20px 30px !important;
-}
-#invitation #salam.scene .salam-couple-names {
-  gap:clamp(7px,1.5vh,14px) !important;
-  line-height:1.12 !important;
-}
-#invitation #salam.scene .salam-guest-address {
-  margin-top:clamp(8px,1.5vh,16px) !important;
-  line-height:1.7 !important;
-}
-</style>
-
-<style id="revision-cover-no-logo-no-date-top-spaced">
-/* Logo M&S, label "Undangan Pernikahan", dan tanggal sampul dihapus dari markup. */
-#cover {
-  align-items:flex-start !important;
-  justify-content:center !important;
-  padding:0 !important;
-}
-#cover .cover-inner.cover-centered {
-  position:absolute !important;
-  top:clamp(58px,8vh,94px) !important;
-  left:50% !important;
-  width:min(100%,560px) !important;
-  max-height:calc(100svh - clamp(58px,8vh,94px) - 14px) !important;
-  margin:0 !important;
-  padding:0 16px !important;
-  display:flex !important;
-  flex-direction:column !important;
-  justify-content:flex-start !important;
-  align-items:center !important;
-  gap:clamp(12px,2vh,18px) !important;
-  text-align:center !important;
-  transform:translateX(-50%) !important;
-  animation:none !important;
-}
-/* Tidak ada animasi/jeda kemunculan teks di sampul. */
-#cover .cover-word {
-  opacity:1 !important;
-  animation:none !important;
-  transform:none !important;
-  filter:none !important;
-}
-#cover .cover-names {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:clamp(9px,1.8vh,16px) !important;
-  margin:0 auto !important;
-  line-height:1.18 !important;
-}
-#cover .cover-names .full-name {
-  display:block !important;
-  line-height:1.22 !important;
-}
-#cover .cover-names .cover-and {
-  display:block !important;
-  line-height:1.1 !important;
-  margin:0.12em 0 !important;
-}
-#cover .guest-address {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:clamp(6px,1.2vh,10px) !important;
-  margin:0 auto !important;
-  padding:0 !important;
-  line-height:1.55 !important;
-}
-#cover .guest-address strong {
-  margin:3px auto !important;
-  padding:0 !important;
-  line-height:1.5 !important;
-}
-#cover .envelope-button {
-  margin:clamp(7px,1.4vh,12px) auto 0 !important;
-}
-#cover .cover-hint {
-  margin:clamp(5px,1.1vh,10px) auto 0 !important;
-  line-height:1.6 !important;
-}
-@media(max-height:650px) {
-  #cover .cover-inner.cover-centered {
-    top:30px !important;
-    max-height:calc(100svh - 38px) !important;
-    gap:8px !important;
-  }
-  #cover .cover-names { gap:7px !important; }
-}
-</style>
-
-
-<style id="instant-open-final-override">
-/* FINAL OVERRIDE: tombol membuka langsung ke halaman pertama tanpa animasi lama. */
-html body.instant-open #cover,
-html body.instant-open #cover * {
-  animation: none !important;
-  animation-delay: 0s !important;
-  animation-duration: 0s !important;
-  transition: none !important;
-  transition-delay: 0s !important;
-  transition-duration: 0s !important;
-}
-html body.instant-open #cover { display: none !important; visibility: hidden !important; opacity: 0 !important; }
-html body.instant-open #invitation {
+html body #cover .cover-names .full-name {
   display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transition: none !important;
-  animation: none !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Great Vibes', 'Lobster Two', 'Brush Script MT', cursive !important;
+  font-size: 1em !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.16 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
 }
-html body.instant-open #invitation #salam,
-html body.instant-open #invitation #salam *,
-html body.instant-open #invitation #salam::before,
-html body.instant-open #invitation #salam::after {
-  animation: none !important;
-  animation-delay: 0s !important;
-  animation-duration: 0s !important;
-  transition: none !important;
-  transition-delay: 0s !important;
-  transition-duration: 0s !important;
+html body #cover .cover-names .cover-and {
+  display: block !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: .72em !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  text-align: center !important;
 }
-html body.instant-open #invitation #salam .sentence-reveal-item,
-html body.instant-open #invitation #salam.scene-motion .sentence-reveal-item,
-html body.instant-open #invitation #salam .reveal-on-scroll,
-html body.instant-open #invitation #salam .is-visible {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  filter: none !important;
-  animation: none !important;
-  transition: none !important;
+/* Tombol diangkat sekitar dua baris teks, dengan tipografi elegan yang serasi. */
+html body #cover .envelope-button {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 42px) !important;
+  font-family: 'DM Sans', Arial, sans-serif !important;
+  font-size: clamp(.86rem, 3.3vw, 1rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: .055em !important;
+  line-height: 1.2 !important;
+}
+html body #cover .envelope-button .envelope-action-label {
+  font-family: 'DM Sans', Arial, sans-serif !important;
+  font-size: inherit !important;
+  font-weight: 600 !important;
+  letter-spacing: inherit !important;
+  line-height: 1.2 !important;
+}
+/* Nama tamu tetap tepat di atas tombol dengan jarak yang nyaman. */
+html body #cover .guest-address {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 42px + 46px + clamp(14px, 2vh, 22px)) !important;
+}
+@media (max-height: 500px) {
+  html body #cover .cover-names {
+    top: 42px !important;
+    width: min(96vw, 620px) !important;
+    font-size: clamp(1.15rem, 4.3vw, 1.8rem) !important;
+    gap: 3px !important;
+  }
+  html body #cover .envelope-button {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 25px) !important;
+    min-height: 38px !important;
+    padding: 8px 20px !important;
+  }
+  html body #cover .guest-address {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 25px + 38px + 8px) !important;
+    gap: 1px !important;
+  }
+  html body #cover .guest-address strong {
+    font-size: clamp(1.1rem, 3.9vw, 1.65rem) !important;
+  }
 }
 </style>
 
+
+
+<style id="revision-raise-guest-and-open-button-5-lines">
+/* Naikkan seluruh kelompok tamu dan tombol sekitar lima baris teks. */
+html body #cover .envelope-button {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 42px + 76px) !important;
+}
+html body #cover .guest-address {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 42px + 46px + clamp(14px, 2vh, 22px) + 76px) !important;
+  gap: 3px !important;
+  line-height: 1 !important;
+}
+html body #cover .guest-label {
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+html body #cover .guest-address strong {
+  line-height: 1 !important;
+  margin: 0 auto !important;
+}
+html body #cover .envelope-button .envelope-action-label {
+  line-height: 1.2 !important;
+}
+@media (max-height: 500px) {
+  html body #cover .envelope-button {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 25px + 58px) !important;
+    min-height: 38px !important;
+    padding: 8px 20px !important;
+  }
+  html body #cover .guest-address {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 25px + 38px + 8px + 58px) !important;
+    gap: 1px !important;
+  }
+  html body #cover .guest-address strong {
+    line-height: 1 !important;
+    font-size: clamp(1.1rem, 3.9vw, 1.65rem) !important;
+  }
+}
+</style>
+
+</body>
+</html>
